@@ -101,6 +101,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataBase.h" />
+    <ClInclude Include="DataBaseAide.h" />
+    <ClInclude Include="DBConnectInfoDlg.h" />
     <ClInclude Include="DBTool.h" />
     <ClInclude Include="DBToolDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -108,6 +111,9 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DataBase.cpp" />
+    <ClCompile Include="DataBaseAide.cpp" />
+    <ClCompile Include="DBConnectInfoDlg.cpp" />
     <ClCompile Include="DBTool.cpp" />
     <ClCompile Include="DBToolDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -127,4 +133,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="DBTool.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

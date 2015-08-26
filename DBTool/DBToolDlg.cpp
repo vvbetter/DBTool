@@ -6,6 +6,7 @@
 #include "DBTool.h"
 #include "DBToolDlg.h"
 #include "afxdialogex.h"
+#include "DBConnectInfoDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -62,6 +63,7 @@ BEGIN_MESSAGE_MAP(CDBToolDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_COMMAND(ID_32771, &CDBToolDlg::OnClickedConDlg)
 END_MESSAGE_MAP()
 
 
@@ -150,3 +152,11 @@ HCURSOR CDBToolDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CDBToolDlg::OnClickedConDlg()
+{
+	// TODO:  在此添加命令处理程序代码
+	CDBConnectInfoDlg m_dlg;
+	m_dlg.DoModal();
+}

@@ -35,6 +35,9 @@
 
 
 
+//MySQL API
+#include "include\mysql.h"
+#pragma comment(lib,".//lib//libmysql.lib")
 
 
 
