@@ -5,6 +5,7 @@ class CDataBase
 {
 public:
 	CDataBase();
+	CDataBase(MYSQL* p);
 	~CDataBase();
 public:
 	bool SetConnectInfo(const TCHAR* host,const UINT port,const TCHAR* user,const TCHAR* pwd);

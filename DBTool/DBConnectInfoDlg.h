@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Resource.h"
+#include "afxwin.h"
 
 // CDBConnectInfoDlg ¶Ô»°¿ò
 
@@ -23,4 +24,9 @@ public:
 	afx_msg void OnBnClickedTestconnection();
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnBnClickedCancel();
+private:
+	CString szIP;
+	CString szPwd;
+	UINT m_uPort;
+	CString szUname;
 };
