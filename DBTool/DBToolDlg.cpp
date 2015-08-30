@@ -99,6 +99,11 @@ BOOL CDBToolDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO:  在此添加额外的初始化代码
+	m_db.SetConnectInfo("127.0.0.1", 3306, "root", "vv111111");
+	if (m_db.StartDataBase() == false)
+	{
+		MessageBox(L"启动数据库失败！");
+	}
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }

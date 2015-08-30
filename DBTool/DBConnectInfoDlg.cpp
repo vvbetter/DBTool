@@ -8,6 +8,7 @@
 #include "DataBase.h"
 
 
+extern CDBToolApp theApp;
 // CDBConnectInfoDlg 对话框
 
 IMPLEMENT_DYNAMIC(CDBConnectInfoDlg, CDialogEx)
@@ -55,8 +56,6 @@ void CDBConnectInfoDlg::OnBnClickedTestconnection()
 {
 	// TODO:  在此添加控件通知处理程序代码
 	UpdateData(TRUE);
-	CDataBase m_testdb;
-	m_testdb.SetConnectInfo(szIP, m_uPort, szUname, szPwd);
 }
 
 

@@ -4,6 +4,12 @@
 
 CDataBase::CDataBase()
 {
+	pMysql = NULL;
+	memset(szException, 0, sizeof(szException));
+	memset(szHost, 0, sizeof(szHost));
+	memset(szUname, 0, sizeof(szUname));
+	memset(szPwd, 0, sizeof(szPwd));
+	port = 0;
 }
 
 CDataBase::CDataBase(MYSQL * p)
@@ -15,29 +21,46 @@ CDataBase::CDataBase(MYSQL * p)
 
 CDataBase::~CDataBase()
 {
+	StopDataBase();
 }
 
-bool CDataBase::SetConnectInfo(const TCHAR * host, const UINT port, const TCHAR * user, const TCHAR * pwd)
+bool CDataBase::SetConnectInfo(const CHAR * host, const UINT nport, const CHAR * user, const CHAR * pwd)
 {
-	ASSERT(pMysql != NULL);
-	if (pMysql == NULL) return false;
-	mysql_real_connect(pMysql, host, user, pwd, NULL, port, NULL, 0);
-	return false;
+	strcpy_s(szHost, host);
+	strcpy_s(szUname, user);
+	strcpy_s(szPwd, pwd);
+	port = nport;
+	return true;
 }
 
 bool CDataBase::StartDataBase()
 {
-	int ret = mysql_server_init(0, NULL, NULL);
-	if (ret != 0)
+	try 
 	{
-		return false;
+		int ret = mysql_server_init(0, NULL, NULL);
+		if (ret != 0)
+		{
+			return false;
+		}
+		pMysql = mysql_init(NULL);
+		if (pMysql == NULL)
+		{
+			return false;
+		}
+		if (mysql_real_connect(pMysql, szHost, szUname, szPwd, NULL, port, NULL, 0) == NULL)
+		{
+			return false;
+		}
 	}
-	pMysql = mysql_init(NULL);
-	if (pMysql == NULL)
+	catch(...)
 	{
-		return false;
+		strcpy_s(szException, mysql_error(pMysql));
+		CString strErrormsg;
+		strErrormsg.Format(L"%s", szException);
+		AfxMessageBox(strErrormsg);
 	}
-	return false;
+
+	return true;
 }
 
 bool CDataBase::StopDataBase()

@@ -3,7 +3,8 @@
 //
 
 #pragma once
-
+#include "stdafx.h"
+#include "DataBase.h"
 
 // CDBToolDlg ¶Ô»°¿ò
 class CDBToolDlg : public CDialogEx
@@ -31,4 +32,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnClickedConDlg();
+public:
+	CDataBase m_db;
 };
